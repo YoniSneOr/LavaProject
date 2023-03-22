@@ -40,6 +40,7 @@ The following API endpoints are available in the Flask app:
 
 - `/` - Displays a dynamic greeting message with the current server index.
 - `/book/<isbn>` - Returns the book data with the given ISBN number in JSON format.
+- `/cover_image/<isbn>` - Returns the book name and the cover image.
 
 ## Customization
 
