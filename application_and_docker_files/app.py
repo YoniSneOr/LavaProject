@@ -1,66 +1,58 @@
-from flask import Flask, jsonify, request
+import json
 import requests
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-# Index counter for server
+# Index counter for the servers
 server_index = 1
 
-# Book data dictionary
-books = {
-    "1234567890": {
-        "title": "The Hitchhiker's Guide to the Galaxy",
-        "author": "Douglas Adams",
-        "year": 1979
-    },
-    "0987654321": {
-        "title": "1984",
-        "author": "George Orwell",
-        "year": 1949
-    }
-}
-
-@app.route("/")
+@app.route('/')
 def hello():
     global server_index
-    message = f"Hello, you are currently working with server {server_index}"
+    server_name = f"server {server_index}"
     server_index += 1
-    return message
+    return f'Hello, you are currently working with {server_name}'
 
-@app.route("/book/<isbn>")
-def book(isbn):
+@app.route('/book/<isbn>')
+def book_info(isbn):
     try:
-        book = books[isbn]
-        return jsonify(book)
-    except  Exception as e:
-        with open("error.log", "a") as f:
-            f.write(f"the book search for  ISDN {str(e)}  does not exists.\n")
-        return jsonify({"error": "Book not found. Please input a valid ISDN number"}), 404
-    
-@app.route("/cover_image")
-def cover_image():
-    isbn = request.args.get("isbn")
+        url = f"https://www.googleapis.com/books/v1/volumes?q=:isbn%{isbn}"
+        response = requests.get(url, verify=False)
+        response.raise_for_status()
+        book_info = response.json()
+        return jsonify(book_info)
+    except requests.exceptions.HTTPError as e:
+        # Log failed requests to a local file
+        with open('failed_requests.log', 'a') as f:
+            f.write(f"{isbn}: {str(e)}\n")
+        return f"Error: {str(e)}", 404
+
+@app.route('/cover_image/<isbn>')
+def cover_image(isbn):
     try:
-        # fetch book metadata and cover image using ISBN
-        book_metadata = {
-            "title": "Sample Book",
-            "author": "John Doe",
-            "publisher": "Random House",
-            "isbn": isbn
-        }
-        return f"""
+        url = f"https://www.googleapis.com/books/v1/volumes?q=:isbn%{isbn}"
+        response = requests.get(url, verify=False)
+        response.raise_for_status()
+        book_info = response.json()
+        # Get the cover image URL from the book data
+        cover_image_url = book_info['items'][0]['volumeInfo']['imageLinks']['thumbnail']
+        if cover_image_url:
+            return f"""
             <html>
-                <head><title>{book_metadata['title']}</title></head>
-                <body>
-                    <h1>{book_metadata['title']}</h1>
-                    <p>Author: {book_metadata['author']}</p>
-                    <p>Publisher: {book_metadata['publisher']}</p>
-                    <p>ISBN: {book_metadata['isbn']}</p>
-                    <img src="https://example.com/cover/{isbn}.jpg" alt="Book cover">
-                </body>
+            <body>
+            <h1>{book_info['items'][0]['volumeInfo']['title']}</h1>
+            <img src="{cover_image_url}">
+            </body>
             </html>
-        """
+            """
+        else:
+            return "No cover image available"
+    except requests.exceptions.HTTPError as e:
+        # Log failed requests to a local file
+        with open('failed_requests.log', 'a') as f:
+            f.write(f"{isbn}: {str(e)}\n")
+        return f"Error: {str(e)}", 404
 
-if __name__ == "__main__":
-    #app.run(debug=True, port=5000)
+if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
