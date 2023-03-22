@@ -1,4 +1,5 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
+import requests
 
 app = Flask(__name__)
 
@@ -31,9 +32,35 @@ def book(isbn):
     try:
         book = books[isbn]
         return jsonify(book)
-    except KeyError:
-        return jsonify({"error": "Book not found"}), 404
+    except  Exception as e:
+        with open("error.log", "a") as f:
+            f.write(f"the book search for  ISDN {str(e)}  does not exists.\n")
+        return jsonify({"error": "Book not found. Please input a valid ISDN number"}), 404
+    
+@app.route("/cover_image")
+def cover_image():
+    isbn = request.args.get("isbn")
+    try:
+        # fetch book metadata and cover image using ISBN
+        book_metadata = {
+            "title": "Sample Book",
+            "author": "John Doe",
+            "publisher": "Random House",
+            "isbn": isbn
+        }
+        return f"""
+            <html>
+                <head><title>{book_metadata['title']}</title></head>
+                <body>
+                    <h1>{book_metadata['title']}</h1>
+                    <p>Author: {book_metadata['author']}</p>
+                    <p>Publisher: {book_metadata['publisher']}</p>
+                    <p>ISBN: {book_metadata['isbn']}</p>
+                    <img src="https://example.com/cover/{isbn}.jpg" alt="Book cover">
+                </body>
+            </html>
+        """
 
 if __name__ == "__main__":
     #app.run(debug=True, port=5000)
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=8000)
