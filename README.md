@@ -28,11 +28,11 @@ Replace `my-flask-app` with your desired image name.
 
 This will start the container and bind port 5000 of the container to port 5000 of the host machine, so you can access the Flask app at `http://localhost:5000/`.
 
-If you want to run in detached mode using the following command:
+If you want to run in detached mode you can do that by using the following command:
 
 ```docker run -d -p 5000:5000 my-flask-app```
 
-Note: If you changed the image name in step 3, make sure to use the same name in this command.
+Note: If you changed the image name in step 4, make sure to use the same name in this command.
 
 ## API Endpoints
 
