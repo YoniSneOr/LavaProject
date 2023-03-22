@@ -1,6 +1,6 @@
 # Flask App with Docker
 
-This is a simple Flask application that provides a dynamic greeting message and book data via JSON. The application is containerized using Docker.
+This is a simple Flask application that provides a dynamic greeting message and book data via JSON (ISBN). The application is containerized using Docker.
 
 ## Requirements
 
@@ -16,13 +16,14 @@ To run the Flask app, follow these steps:
 1. Clone this repository to your local machine.
 2. Open a terminal and navigate to the project directory.
 3. Build the Docker image using the following command:
-docker build -t my-flask-app .
+
+```docker build -t my-flask-app .```
 
 Replace `my-flask-app` with your desired image name.
 
 4. Run the Docker container using the following command:
 
-docker run -p 5000:5000 my-flask-app
+```docker run -p 5000:5000 my-flask-app```
 
 This will start the container and bind port 5000 of the container to port 5000 of the host machine, so you can access the Flask app at `http://localhost:5000/`.
 
