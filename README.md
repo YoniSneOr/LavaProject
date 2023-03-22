@@ -22,7 +22,7 @@ To run the Flask app, follow these steps:
 
 Replace `my-flask-app` with your desired image name.
 
-4. Run the Docker container using the following command:
+5. Run the Docker container using the following command:
 
 ```docker run -p 5000:5000 my-flask-app```
 
