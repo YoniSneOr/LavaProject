@@ -15,7 +15,8 @@ To run the Flask app, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Open a terminal and navigate to the project directory.
-3. Build the Docker image using the following command:
+3. go to `application_and_docker_files` directory
+4. Build the Docker image using the following command:
 
 ```docker build -t my-flask-app .```
 
@@ -26,6 +27,10 @@ Replace `my-flask-app` with your desired image name.
 ```docker run -p 5000:5000 my-flask-app```
 
 This will start the container and bind port 5000 of the container to port 5000 of the host machine, so you can access the Flask app at `http://localhost:5000/`.
+
+If you want to run in detached mode using the following command:
+
+```docker run -d -p 5000:5000 my-flask-app```
 
 Note: If you changed the image name in step 3, make sure to use the same name in this command.
 
