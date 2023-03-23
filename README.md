@@ -81,6 +81,10 @@ To run the YAML file un the following command:
 
 Replace <path-to-yaml-file> with the path to the YAML file on your local machine.
 
+You can run the same command eith the `validate` option to validate you yaml file:
+
+```kubectl apply -f /<path-to-yaml-file>/my-app.yaml --validate=true ```
+
 After running the above command, you can check the status of the deployment and services using the following commands:
 
 ```kubectl get deployments```

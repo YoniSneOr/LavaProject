@@ -17,11 +17,11 @@ spec:
       - name: my-flask-app
         image: dockerhub.paypalcorp.com/my-flask-app
         ports:
-        - containerPort: 8000
+        - containerPort: 5000
         readinessProbe:
           httpGet:
             path: /
-            port: 8000
+            port: 5000
           initialDelaySeconds: 10
           periodSeconds: 5
   template:
@@ -34,11 +34,11 @@ spec:
       - name: my-flask-app
         image: dockerhub.paypalcorp.com/my-flask-app
         ports:
-        - containerPort: 8000
+        - containerPort: 5000
         readinessProbe:
           httpGet:
             path: /
-            port: 8000
+            port: 5000
           initialDelaySeconds: 10
           periodSeconds: 5
 
@@ -72,7 +72,7 @@ spec:
     spec:
       containers:
       - name:  nginx-loadbalancer
-        image: dockerhub.paypalcorp.com/ngnix-loadbalancer 
+        image: dockerhub.paypalcorp.com/nginx-loadbalancer 
         ports:
         - containerPort: 80
         readinessProbe:
