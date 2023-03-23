@@ -50,7 +50,7 @@ Once you have installed Minikube and Docker, you can follow these steps to creat
 
 Start Minikube by running the command ```minikube start``` in your terminal. This will create a single-node Kubernetes cluster on your machine.
 
-## Create a Kubernetes deployment for the Flask application by creating a YAML file:
+Create a Kubernetes deployment for the Flask application by creating a YAML file:
 
 ## YAML File Explanation
 
