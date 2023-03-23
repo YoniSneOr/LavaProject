@@ -42,11 +42,67 @@ The following API endpoints are available in the Flask app:
 - `/book/<isbn>` - Returns the book data with the given ISBN number in JSON format.
 - `/cover_image/<isbn>` - Returns the book name and the cover image.
 
+# Runing on MINIKUBE
+
+To run the commands with Minikube, you need to first install Minikube and a container runtime such as Docker on your machine.
+
+Once you have installed Minikube and Docker, you can follow these steps to create a Kubernetes cluster with Minikube and deploy the application:
+
+Start Minikube by running the command ```minikube start``` in your terminal. This will create a single-node Kubernetes cluster on your machine.
+
+## Create a Kubernetes deployment for the Flask application by creating a YAML file:
+
+## YAML File Explanation
+
+The YAML file defines a Kubernetes deployment that runs a Flask application and an Nginx load balancer.
+
+The Flask application is deployed as a Deployment with two replicas, and the Nginx load balancer is deployed as a separate Deployment with a single replica.
+
+The YAML file also defines two services that expose the Flask application and Nginx load balancer to the cluster.
+
+## Deployment for Backend Application
+This YAML file describes a Kubernetes deployment for a backend application. The deployment will ensure that two replicas of the application are running at all times. The deployment consists of a selector to match the labels of the pods that should be included in the deployment, and a template for creating new pods. The template includes a container specification that defines a container named `my-flask-app` that runs the `my-flask-app` image. This container exposes port 8000, which is defined as a container port. The deployment also specifies a readiness probe to check if the container is ready to serve requests. The readiness probe is an HTTP GET request to `/` on port 8000, with an initial delay of 10 seconds and a check interval of 5 seconds.
+
+## Service for Backend Application
+This YAML file describes a Kubernetes service for the backend application. The service uses a selector to match the labels of the pods that should be included in the service. The service exposes port 8000, which is the same port as the container port defined in the deployment. The service is named backend.
+
+## Deployment for Nginx Load Balancer
+This YAML file describes a Kubernetes deployment for an Nginx load balancer. The deployment will ensure that one replica of the load balancer is running at all times. The deployment consists of a selector to match the labels of the pods that should be included in the deployment, and a template for creating new pods. The template includes a container specification that defines a container named `my-nginx-loadbalancer` that runs the nginx image. This container exposes port 80, which is defined as a container port. The deployment also specifies a readiness probe to check if the container is ready to serve requests. The readiness probe is an HTTP GET request to `/` on port 80, with an initial delay of 10 seconds and a check interval of 5 seconds.
+
+## Service for Nginx Load Balancer
+This YAML file describes a Kubernetes service for the Nginx load balancer. The service uses a selector to match the labels of the pods that should be included in the service. The service exposes port 80, which is the same port as the container port defined in the deployment. The service is named nginx-service.
+Expose the backend deployment as a Kubernetes service by running the command:
+
+
+## Running the APP
+To run the YAML file un the following command:
+
+```kubectl apply -f /<path-to-yaml-file>/my-app.yaml```
+
+Replace <path-to-yaml-file> with the path to the YAML file on your local machine.
+
+After running the above command, you can check the status of the deployment and services using the following commands:
+
+```kubectl get deployments```
+
+```kubectl get pods```
+
+```kubectl get services```
+
+These commands will show you the status of the resources you have created, including the number of replicas running, their status, and their IP addresses.
+
+You can also check the logs of the containers using the following command:
+
+```kubectl logs <pod-name> <container-name>```
+
+Replace <pod-name> with the name of the pod you want to check, and <container-name> with the name of the container inside the pod.
+
+To test the backend application, you can use curl or a web browser to send requests to the IP address of the service. You should see the response from the Flask application.
+
+To test the Nginx load balancer, you can send requests to the IP.
+
+
 ## Customization
 
 You can customize the Flask app by modifying the code in the `app.py` file. The book data is stored in the `books` dictionary, which you can update or replace with your own data.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
