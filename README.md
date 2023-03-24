@@ -130,32 +130,63 @@ example:
 ``` yaml
 # YAML
 apiVersion: networking.k8s.io/v1
+
 kind: Ingress
+
 metadata:
-  name: web-ingress
+
+  name: example-ingress
+
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+
 spec:
+
   rules:
-    - host: web.minikube.local
+
+    - host: isbn.com
+
       http:
+
         paths:
-          - path: 
-            pathType: Prefix
+
+          - path:  /
+
+            pathType: Exact
+
             backend:
+
               service:
-                name: web
+
+                name: backend
+
                 port:
-                  name: http
+
+                  number: 5000
+
+          - path: /book
+
+            pathType: Exact
+
+            backend:
+
+              service:
+
+                name: backend
+
+                port:
+
+                  number: 5000
 ```
 
-Save the above file as web-ingress.yaml and deploy it by running the following command:
+Save the above file as ingress.yaml and deploy it by running the following command:
 
-```kubectl apply -f web-ingress.yaml```
+```kubectl apply -f ingress.yaml```
 
-Note that the `host` field in the above file is set to `web.minikube.local`. You need to add an entry to your system's hosts file to map this hostname to the IP address of the Nginx Ingress Load Balancer:
+Note that the `host` field in the above file is set to `isbn.com`. You need to add an entry to your system's hosts file to map this hostname to the IP address of the Nginx Ingress Load Balancer:
 
-```echo "$(minikube ip) web.minikube.local" | sudo tee -a /etc/hosts```
+```echo "$(minikube ip) isbn.com" | sudo tee -a /etc/hosts```
 
 ## Running the APP
 To run the YAML file un the following command:
