@@ -127,24 +127,27 @@ Ingress addon is not enabled by default in Minikube. You can enable it by runnin
 
 example:
 
-apiVersion: networking.k8s.io/v1<br />
-kind: Ingress<br />
-metadata:<br />
-  name: web-ingress<br />
-  annotations:<br />
-    kubernetes.io/ingress.class: "nginx"<br />
-spec:<br />
-  rules:<br />
-    - host: web.minikube.local<br />
-      http:<br />
-        paths:<br />
-          - path: /<br />
-            pathType: Prefix<br />
-            backend:<br />
-              service:<br />
-                name: web<br />
-                port:<br />
-                  name: http<br />
+``` yaml
+# YAML
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: web.minikube.local
+      http:
+        paths:
+          - path: 
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                port:
+                  name: http
+```
 
 
 
