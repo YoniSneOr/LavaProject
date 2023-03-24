@@ -204,7 +204,7 @@ To test the Nginx load balancer, you can send requests to the IP.
 
 Test the application
 
-You can now test the application by accessing `http://web.minikube.local` in your web browser. If everything is set up correctly, you should see a "Hello World" message.
+You can now test the application by accessing `http://isbn.com` with curl commands or in browser.
 
 That's it! You've successfully used Nginx Ingress Load Balancer for Minikube.
 
