@@ -55,6 +55,11 @@ If you want to run in detached mode you can do that by using the following comma
 
 ```docker run -d --network=books --name nginx -p 80:80 ngnix-loadbalancer```
 
+## Container are up and running
+
+
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image9.png)
+
 ## you can see the  diffrent result below accessing directly each flask or when accessing the nginx-loadbalancer:
 
   
@@ -74,7 +79,6 @@ If you want to run in detached mode you can do that by using the following comma
 
 ![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image8.png)
 
-![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image9.png)
 
 ## API Endpoints
 
