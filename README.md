@@ -62,6 +62,20 @@ If you want to run in detached mode you can do that by using the following comma
 
 ![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image1.png)
 
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image2.png)
+
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image4.png)
+
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image5.png)
+
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image6.png)
+
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image7.png)
+
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image8.png)
+
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image9.png)
+
 ## API Endpoints
 
 The following API endpoints are available in the Flask app:
