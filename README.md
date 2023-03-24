@@ -149,8 +149,13 @@ spec:
                   name: http
 ```
 
+Save the above file as web-ingress.yaml and deploy it by running the following command:
 
+```kubectl apply -f web-ingress.yaml```
 
+Note that the `host` field in the above file is set to `web.minikube.local`. You need to add an entry to your system's hosts file to map this hostname to the IP address of the Nginx Ingress Load Balancer:
+
+```echo "$(minikube ip) web.minikube.local" | sudo tee -a /etc/hosts```
 
 ## Running the APP
 To run the YAML file un the following command:
@@ -182,6 +187,12 @@ Replace <pod-name> with the name of the pod you want to check, and <container-na
 To test the backend application, you can use curl or a web browser to send requests to the IP address of the service. You should see the response from the Flask application.
 
 To test the Nginx load balancer, you can send requests to the IP.
+
+Test the application
+
+You can now test the application by accessing `http://web.minikube.local` in your web browser. If everything is set up correctly, you should see a "Hello World" message.
+
+That's it! You've successfully used Nginx Ingress Load Balancer for Minikube.
 
 
 ## Customization
