@@ -49,7 +49,7 @@ If you want to run in detached mode you can do that by using the following comma
 
 8. run the containers:
 
-```docker run  -d --network=books --name backend1 -p 8000:8000 my-flask-app 
+```docker run  -d --network=books --name backend1 -p 8000:8000 my-flask-app``` 
 
 ```docker run  -d --network=books --name backend1 -p 8001:8000 my-flask-app``` 
 
