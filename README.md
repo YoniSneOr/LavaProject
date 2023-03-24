@@ -127,7 +127,7 @@ Ingress addon is not enabled by default in Minikube. You can enable it by runnin
 
 example:
 
-`apiVersion: networking.k8s.io/v1<br />
+apiVersion: networking.k8s.io/v1<br />
 kind: Ingress<br />
 metadata:<br />
   name: web-ingress<br />
@@ -145,7 +145,7 @@ spec:<br />
                 name: web<br />
                 port:<br />
                   name: http<br />
-`
+
 
 
 
