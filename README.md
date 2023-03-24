@@ -60,7 +60,7 @@ If you want to run in detached mode you can do that by using the following comma
   
 ![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image.png)
 
-![alt text] (https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image1.png)
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image1.png)
 
 ## API Endpoints
 
