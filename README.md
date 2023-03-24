@@ -113,12 +113,17 @@ This YAML file describes a Kubernetes deployment for a backend application. The 
 ## Service for Backend Application
 This YAML file describes a Kubernetes service for the backend application. The service uses a selector to match the labels of the pods that should be included in the service. The service exposes port 8000, which is the same port as the container port defined in the deployment. The service is named backend.
 
-## Deployment for Nginx Load Balancer
-This YAML file describes a Kubernetes deployment for an Nginx load balancer. The deployment will ensure that one replica of the load balancer is running at all times. The deployment consists of a selector to match the labels of the pods that should be included in the deployment, and a template for creating new pods. The template includes a container specification that defines a container named `my-nginx-loadbalancer` that runs the nginx image. This container exposes port 80, which is defined as a container port. The deployment also specifies a readiness probe to check if the container is ready to serve requests. The readiness probe is an HTTP GET request to `/` on port 80, with an initial delay of 10 seconds and a check interval of 5 seconds.
+## Nginx Load Balancer for minikube
 
-## Service for Nginx Load Balancer
-This YAML file describes a Kubernetes service for the Nginx load balancer. The service uses a selector to match the labels of the pods that should be included in the service. The service exposes port 80, which is the same port as the container port defined in the deployment. The service is named nginx-service.
-Expose the backend deployment as a Kubernetes service by running the command:
+### Enable Ingress addon
+
+Ingress addon is not enabled by default in Minikube. You can enable it by running the following command:
+
+```minikube addons enable ingress```
+
+## Create an ingress resource
+
+### Create an Ingress resource that specifies how traffic should be routed to the web service:
 
 
 ## Running the APP
