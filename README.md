@@ -9,9 +9,9 @@ To run this application, you need to have the following software installed on yo
 - Docker
 - Python 3
 
-## Running the App
+## Running the App with Docker
 
-To run the Flask app, follow these steps:
+To run the Flask  and NGINX apps, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Open a terminal and navigate to the project directory.
@@ -20,9 +20,20 @@ To run the Flask app, follow these steps:
 
 ```docker build -t my-flask-app .```
 
+```docker build -t ngnix-loadbalancer .```
+
 Replace `my-flask-app` with your desired image name.
 
-5. Run the Docker container using the following command:
+5. tag and push the images to docker hub
+``` docker image tag my-flask-app <your user in docker hub>/my-flask-app```
+
+``` docker image tag ngnix-loadbalancer <your user in docker hub>/ngnix-loadbalancer```
+
+```docker push <your user in docker hub>/my-flask-app```
+
+```docker push <your user in docker hub>/ngnix-loadbalancer```
+
+6. Run the Docker container using the following command:
 
 ```docker run -p 5000:5000 my-flask-app```
 
@@ -32,7 +43,17 @@ If you want to run in detached mode you can do that by using the following comma
 
 ```docker run -d -p 5000:5000 my-flask-app```
 
-Note: If you changed the image name in step 4, make sure to use the same name in this command.
+7. create a docker network with following command:
+
+```docker network create <network name>```
+
+8. run the containers:
+
+```docker run  -d --network=books --name backend1 -p 8000:8000 my-flask-app 
+
+```docker run  -d --network=books --name backend1 -p 8001:8000 my-flask-app``` 
+
+```docker run -d --network=books --name nginx -p 80:80 ngnix-loadbalancer```
 
 ## API Endpoints
 
@@ -41,6 +62,7 @@ The following API endpoints are available in the Flask app:
 - `/` - Displays a dynamic greeting message with the current server index.
 - `/book/<isbn>` - Returns the book data with the given ISBN number in JSON format.
 - `/cover_image/<isbn>` - Returns the book name and the cover image.
+
 
 # Runing on MINIKUBE
 
