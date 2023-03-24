@@ -208,13 +208,19 @@ You can now test the application by accessing `http://isbn.com` with curl comman
 
 That's it! You've successfully used Nginx Ingress Load Balancer for Minikube.
 
+### Curl on service backend on port 30850 to get details about book 0987654321
+
 ![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image19.png)
+
+### Curl on ingress port 80 to get cover image for  book 0987654321
 
 ![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image20.png)
 
+### Curl on ingress port 80 to get details about book 0987654321
+
 ![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image21.png)
 
-![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image22.png)
+
 
 ![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image23.png)
 
