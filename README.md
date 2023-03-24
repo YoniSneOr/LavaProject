@@ -130,53 +130,36 @@ example:
 ``` yaml
 # YAML
 apiVersion: networking.k8s.io/v1
-
 kind: Ingress
-
 metadata:
-
-  name: example-ingress
-
+  name: my-ingress
   annotations:
-
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-
+    kubernetes.io/ingress.class: "nginx"
 spec:
-
   rules:
-
     - host: isbn.com
-
       http:
-
         paths:
-
           - path:  /
-
-            pathType: Exact
-
+            pathType: Prefix
             backend:
-
               service:
-
                 name: backend
-
                 port:
-
                   number: 5000
-
           - path: /book
-
-            pathType: Exact
-
+            pathType: Prefix
             backend:
-
               service:
-
                 name: backend
-
                 port:
-
+                  number: 5000
+         -  path: /cover_image
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
                   number: 5000
 ```
 
