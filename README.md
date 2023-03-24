@@ -211,6 +211,13 @@ That's it! You've successfully used Nginx Ingress Load Balancer for Minikube.
 ![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image19.png)
 
 ![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image20.png)
+
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image21.png)
+
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image22.png)
+
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image23.png)
+
 ## Customization
 
 You can customize the Flask app by modifying the code in the `app.py` file. The book data is stored in the `books` dictionary, which you can update or replace with your own data.
