@@ -18,6 +18,7 @@ def hello():
 def book_info(isbn):
     try:
         url = f"https://www.googleapis.com/books/v1/volumes?q=:isbn%{isbn}"
+
         response = requests.get(url, verify=False)
         response.raise_for_status()
         book_info = response.json()
