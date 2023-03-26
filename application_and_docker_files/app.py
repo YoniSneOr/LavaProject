@@ -1,18 +1,17 @@
 import json
 import requests
 from flask import Flask, jsonify
+import socket
 
 app = Flask(__name__)
 
 # Index counter for the servers
-server_index = 1
+
 
 @app.route('/')
 def hello():
-    global server_index
-    server_name = f"server {server_index}"
-    server_index += 1
-    return f'Hello, you are currently working with {server_name}'
+    server_index = socket.gethostname()
+    return f'Hello, you are currently working with server {server_index}'
 
 @app.route('/book/<isbn>')
 def book_info(isbn):
