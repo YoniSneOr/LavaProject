@@ -137,7 +137,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-    - host: isbn.com
+    - host: my-ingress.com
       http:
         paths:
           - path:  /
