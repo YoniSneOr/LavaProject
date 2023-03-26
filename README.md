@@ -222,7 +222,7 @@ That's it! You've successfully used Nginx Ingress Load Balancer for Minikube.
 ![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image22.png)
 
 ### Curl to URL
-![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image24.png)
+![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image32.png)
 
 
 
