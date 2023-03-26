@@ -167,9 +167,9 @@ Save the above file as ingress.yaml and deploy it by running the following comma
 
 ```kubectl apply -f ingress.yaml```
 
-Note that the `host` field in the above file is set to `isbn.com`. You need to add an entry to your system's hosts file to map this hostname to the IP address of the Nginx Ingress Load Balancer:
+Note that the `host` field in the above file is set to `my-ingress.com`. You need to add an entry to your system's hosts file to map this hostname to the IP address of the Nginx Ingress Load Balancer:
 
-```echo "$(minikube ip) isbn.com" | sudo tee -a /etc/hosts```
+```echo "$(minikube ip) my-ingress.com" | sudo tee -a /etc/hosts```
 
 ## Running the APP
 To run the YAML file un the following command:
