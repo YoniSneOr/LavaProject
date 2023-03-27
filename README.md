@@ -60,7 +60,7 @@ If you want to run in detached mode you can do that by using the following comma
 
 ![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image9.png)
 
-## you can see the  diffrent result below accessing directly each flask or when accessing the nginx-loadbalancer:
+## you can see the  diffrent result below accessing directly each container or when accessing the nginx-loadbalancer:
 
   
 ![alt text](https://github.com/YoniSneOr/LavaProject/blob/main/pictures/image30.png)
